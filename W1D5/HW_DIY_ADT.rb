@@ -85,9 +85,10 @@ class Map
   end
 end
 
-p map = Map.new
-p map.set(1,'one')
-p map.set(2,'two')
-p map.get(2)
-p map.delete(1)
-p map 
+# p map = Map.new
+# p map.set(1,'one')
+# p map.set(2,'two')
+# p map.set(2,'two')
+# p map.get(2)
+# p map.delete(1)
+# p map
