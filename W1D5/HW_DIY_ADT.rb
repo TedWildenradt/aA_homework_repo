@@ -1,3 +1,4 @@
+require 'byebug'
 class Stack
   def initialize
     # create ivar to store stack here!
@@ -19,6 +20,12 @@ class Stack
     @stack.last
   end
 end
+ # p stack = Stack.new
+ # p stack.push(1)
+ # p stack.push(2)
+ # p stack.push(3)
+ # p stack.pop
+ # p stack.peek
 
 
 class Queue
@@ -38,6 +45,12 @@ class Queue
     @queue.first
   end
 end
+# p queue = Queue.new
+# p queue.enqueue(1)
+# p queue.enqueue(2)
+# p queue.enqueue(3)
+# p queue.dequeue
+# p queue.peek
 
 class Map
   def initialize
@@ -45,14 +58,15 @@ class Map
   end
 
   def set(key, value)
-    self.each do |array|
+    @map.push([key,value]) if @map.empty?
+    @map.each do |array|
       return if array[0] == key
     end
-    self.push([key,value])
+    @map.push([key,value])
   end
 
   def get(key)
-    self.each do |array|
+    @map.each do |array|
       if array[0] == key
         return array[1]
       end
@@ -62,11 +76,18 @@ class Map
 
   def delete(key)
     i = nil
-    self.each_with_index do |array, idx|
+    @map.each_with_index do |array, idx|
       if array[0] == key
         i = idx
       end
     end
-    self.delete_at(i) unless i.nil?
+    @map.delete_at(i) unless i.nil?
   end
 end
+
+p map = Map.new
+p map.set(1,'one')
+p map.set(2,'two')
+p map.get(2)
+p map.delete(1)
+p map 
