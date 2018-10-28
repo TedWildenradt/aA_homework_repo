@@ -3,8 +3,10 @@ class Simon
 
   attr_accessor :sequence_length, :game_over, :seq
 
-  def initialize
-
+  def initialize(sequence_length=1, game_over=false, seq=[])
+    @sequence_length = sequence_length
+    @game_over = game_over
+    @seq = seq
   end
 
   def play
