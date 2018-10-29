@@ -16,10 +16,17 @@ class Board
     output[7..12].map!.with_index do |el, idx|
       output[idx] = [:stone,:stone,:stone,:stone]
     end
-    output 
+    output
   end
 
   def valid_move?(start_pos)
+    unless (0..5).member?(start_pos) && (7..12).member?(start_pos)
+      raise 'Invalid starting cup'
+    end
+    unless @cups[start_pos].empty?
+      raise 'Starting cup is empty'
+    end 
+
   end
 
   def make_move(start_pos, current_player_name)
