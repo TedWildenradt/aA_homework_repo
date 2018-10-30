@@ -1,3 +1,4 @@
+require 'byebug'
 class Board
   attr_accessor :cups
 
@@ -14,18 +15,19 @@ class Board
       output[idx] = [:stone,:stone,:stone,:stone]
     end
     output[7..12].map!.with_index do |el, idx|
-      output[idx] = [:stone,:stone,:stone,:stone]
+      output[idx + 7] = [:stone,:stone,:stone,:stone]
     end
     output
   end
 
   def valid_move?(start_pos)
+    # debugger
     unless (0..5).member?(start_pos) && (7..12).member?(start_pos)
       raise 'Invalid starting cup'
     end
-    unless @cups[start_pos].empty?
-      raise 'Starting cup is empty'
-    end 
+    if @cups[start_pos].empty?
+      raise IOError.new, "Starting cup is empty"
+    end
 
   end
 
@@ -45,8 +47,20 @@ class Board
   end
 
   def one_side_empty?
+    return true if @cups[0..5].all? {|arr| arr.empty?}
+    return true if @cups[7..12].all? {|arr| arr.empty?}
+    false
   end
 
   def winner
+    return :draw if @cups[6].length == @cups[13]
+    
   end
+end
+
+if __FILE__ == $PROGRAM_NAME
+  board = Board.new('bob','joe')
+  p board.cups
+  board.cups[0] = []
+  board.valid_move?(0)
 end
