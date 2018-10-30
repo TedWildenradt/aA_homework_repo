@@ -45,6 +45,8 @@ describe Dessert do
 
   describe "#eat" do
     it "subtracts an amount from the quantity" do
+      dessert.eat(10)
+      expect(dessert.quantity).to eq(15)
     end
 
     it "raises an error if the amount is greater than the quantity" do
