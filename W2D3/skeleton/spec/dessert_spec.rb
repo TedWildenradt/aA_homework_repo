@@ -64,6 +64,8 @@ describe Dessert do
 
   describe "#make_more" do
     it "calls bake on the dessert's chef with the dessert passed in" do
+      allow(chef).to receive(:bake).and_return(dessert.heat!)
+      expect(dessert.temp).to eq(400)
     end
   end
 end
