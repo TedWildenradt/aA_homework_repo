@@ -22,12 +22,10 @@ class Board
 
   def valid_move?(start_pos)
     # debugger
-    unless (0..5).member?(start_pos) && (7..12).member?(start_pos)
-      raise 'Invalid starting cup'
-    end
-    if @cups[start_pos].empty?
-      raise IOError.new, "Starting cup is empty"
-    end
+    raise 'Invalid starting cup' if start_pos < 0 || start_pos > 12
+
+    raise "Starting cup is empty" if @cups[start_pos].empty?
+
 
   end
 
@@ -53,8 +51,8 @@ class Board
   end
 
   def winner
-    return :draw if @cups[6].length == @cups[13]
-    
+    return :draw if @cups[6].length == @cups[13].length
+
   end
 end
 
