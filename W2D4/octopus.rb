@@ -33,10 +33,10 @@ def clever(array)
   longest_index
 end
 
-def slow_dance(array)
-
+def slow_dance(target, array)
+  array.index(target)
 end
 
-def constant_dance(array)
-
+def constant_dance(target, hash) #hash contains tiles as the keys and indexes as values
+  hash[target]
 end
