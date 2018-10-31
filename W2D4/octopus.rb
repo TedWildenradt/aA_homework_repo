@@ -19,7 +19,18 @@ def dominant(array)
 end
 
 def clever(array)
-
+  longest_index = array[0]
+  longest_length = array[0].length
+  len = array.length
+  i = 1
+  while i < len
+    if array[i].length > longest_length
+      longest_index = array[i]
+      longest_length = array[i].length
+    end
+    i += 1
+  end
+  longest_index
 end
 
 def slow_dance(array)
