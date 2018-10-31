@@ -15,7 +15,7 @@ def sluggish(array)
 end
 
 def dominant(array)
-
+  array.sort.last
 end
 
 def clever(array)
