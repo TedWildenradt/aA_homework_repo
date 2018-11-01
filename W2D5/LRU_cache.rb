@@ -1,7 +1,7 @@
 class LRUCache
   def initialize(num)
     @cache = []
-    @max_length = num 
+    @max_length = num
   end
 
   def count
@@ -13,12 +13,20 @@ class LRUCache
   end
 
   def show
-
+    print @cache
   end
 
   private
   def push(el)
     @cache.push
+  end
+
+  def shift
+    @cache.shift
+  end
+
+  def check(el)
+    @cache.index(el)
   end
 
 end
